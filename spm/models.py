@@ -52,7 +52,41 @@ class CO_T(models.Model):
     course = models.ForeignKey(Course_T, on_delete=models.CASCADE)
     plo = models.ForeignKey(PLO_T, on_delete=models.CASCADE)
 
+class Faculty_T(models.Model):
+    faculty_id = models.CharField(max_length= 5, primary_key=True)
+    f_name = models.CharField(max_length= 20)
+    l_name = models.CharField(max_length= 20)
+    email = models.EmailField(max_length= 30)
+    contact_no = models.CharField(max_length= 15)
+    date_of_birth = models.DateTimeField()
+    gender = models.CharField(max_length= 6)
+    street = models.CharField(max_length= 40)
+    city = models.CharField(max_length= 20)
+    state = models.CharField(max_length= 20)
+    faculty_type = models.CharField(max_length= 10)
 
 
+class VC_T(models.Model):
+    VFaculty_id = models.ForeignKey(Faculty_T, on_delete=models.CASCADE)
+    joining_date = models.DateTimeField()
+    end_date = models.DateTimeField(null = True)
+
+class GFaculty_T(models.Model):
+    Gfaculty_id = models.ForeignKey(Faculty_T, on_delete=models.CASCADE)
+    designation = models.CharField(max_length= 25)
+    join_date = models.DateTimeField()
+    department = models.ForeignKey(Department_T, on_delete=models.CASCADE)
+
+class Dean_T(models.Model):
+    DFaculty_id = models.ForeignKey(Faculty_T, on_delete=models.CASCADE)
+    joining_date = models.DateTimeField()
+    end_date = models.DateTimeField()
+    school = models.ForeignKey(School_T, on_delete=models.CASCADE)
+
+class Department_Head_T(models.Model):
+    HODFaculty_id = models.ForeignKey(Faculty_T, on_delete=models.CASCADE)
+    joining_date = models.DateTimeField()
+    end_date = models.DateTimeField()
+    department = models.ForeignKey(Department_T, on_delete=models.CASCADE)
 
 
