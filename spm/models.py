@@ -50,7 +50,9 @@ class CO_T(models.Model):
     co_id = models.CharField(max_length= 5, primary_key=True)
     details = models.TextField()
     course = models.ForeignKey(Course_T, on_delete=models.CASCADE)
-    plo_id = models.ForeignKey(PLO_T, on_delete=models.CASCADE)
+    plo = models.ForeignKey(PLO_T, on_delete=models.CASCADE)
+
+
 
 
 
