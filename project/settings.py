@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'spm.apps.SpmConfig',
+    'import_export',
 ]
 
 MIDDLEWARE = [
