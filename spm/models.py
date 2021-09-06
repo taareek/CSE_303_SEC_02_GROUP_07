@@ -4,6 +4,10 @@ class School_T(models.Model):
     school_id = models.CharField(max_length= 10, primary_key=True)
     school_name = models.CharField(max_length= 60)
 
+    class Meta:
+        managed = False
+        db_table = 'spm_school_t'
+
     def __str__(self):
         return self.school_id
 
