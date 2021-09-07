@@ -1,7 +1,7 @@
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
 
-from .models import School_T, Department_T, Program_T, Student_T, Course_T, Pre_req_course_T, PLO_T, CO_T, Faculty_T, VC_T, GFaculty_T, Department_Head_T, Dean_T, Assessments_T, Section_T, Student_Enrollment_T, Evaluation_T
+from .models import School_T, Department_T, Program_T, Student_T, Course_T, Pre_req_course_T, PLO_T, CO_T, Faculty_T, VC_T, GFaculty_T, Department_Head_T, Dean_T, Section_T, Student_Enrollment_T, Assessments_T, Evaluation_T
 # Register your models here.
 #admin.site.register(School_T)
 #admin.site.register(Department_T)
@@ -96,10 +96,9 @@ admin.register(GFaculty_T)
 class SectionData(ImportExportModelAdmin):
     pass
 admin.register(Section_T)
-
 @admin.register(Assessments_T)
-class AssessmentsData(ImportExportModelAdmin):
-    pass
+class AssessmentData(ImportExportModelAdmin):
+   pass
 admin.register(Assessments_T)
 
 @admin.register(Student_Enrollment_T)

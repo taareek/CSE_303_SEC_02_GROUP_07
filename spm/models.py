@@ -4,9 +4,9 @@ class School_T(models.Model):
     school_id = models.CharField(max_length= 10, primary_key=True)
     school_name = models.CharField(max_length= 60)
 
-    class Meta:
-        managed = False
-        db_table = 'spm_school_t'
+    #class Meta:
+    #    managed = False
+    #    db_table = 'spm_school_t'
 
     def __str__(self):
         return self.school_id
@@ -97,21 +97,13 @@ class Department_Head_T(models.Model):
     department = models.ForeignKey(Department_T, on_delete=models.CASCADE)
 
 class Section_T(models.Model):
-    section_id = models.CharField(max_length= 20, primary_key=True, default= None)
+    section_id = models.CharField(max_length= 20, primary_key=True)
     section_no = models.IntegerField(name= 'Section No')
     semester_name = models.CharField(max_length= 10)
     year = models.IntegerField(name= 'Year')
     student_capacity = models.IntegerField(name='No of student')
     course = models.ForeignKey(Course_T, on_delete=models.CASCADE)
     faculty = models.ForeignKey(GFaculty_T, on_delete=models.CASCADE)
-
-class Assessments_T(models.Model):
-    assessments_id = models.IntegerField(name=  'Assessment ID', primary_key=True)
-    assessments_name = models.CharField(max_length= 20)
-    total_marks = models.FloatField(name= 'Total Marks')
-    obtain_marks = models.FloatField(name= 'Obtain Marks')
-    co = models.ForeignKey(CO_T, on_delete=models.CASCADE)
-    section = models.ForeignKey(School_T, on_delete=models.CASCADE)
 
 class Student_Enrollment_T(models.Model):
     student_enrollment_id = models.IntegerField(name='Enrollment ID', primary_key= True)
@@ -120,10 +112,16 @@ class Student_Enrollment_T(models.Model):
     semester = models.CharField(max_length= 10)
     year = models.IntegerField(name= 'Year')
 
+class Assessments_T(models.Model):
+    assessments_id = models.CharField(max_length=25, primary_key=True)
+    assessments_name = models.CharField(max_length= 20)
+    total_marks = models.FloatField(name= 'Total Marks')
+    co = models.ForeignKey(CO_T, on_delete=models.CASCADE)
+    section = models.ForeignKey(Section_T, on_delete=models.CASCADE)
+
 class Evaluation_T(models.Model):
     evaluation_id = models.IntegerField(name= 'Evaluation ID', primary_key=True)
     obtain_marks = models.FloatField(name= 'Obtain Marks')
-    total_marks = models.FloatField(name= 'Total Marks')
+    #total_marks = models.FloatField(name= 'Total Marks')
     assessments = models.ForeignKey(Assessments_T, on_delete=models.CASCADE)
     student_enrollment = models.ForeignKey(Student_Enrollment_T, on_delete=models.CASCADE)
-
