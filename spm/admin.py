@@ -21,6 +21,8 @@ from .models import School_T, Department_T, Program_T, Student_T, Course_T, Pre_
 #admin.site.register(Student_Enrollment_T)
 #admin.site.register(Evaluation_T)
 
+# To upload data using excel sheet 
+
 @admin.register(School_T)
 class SchoolData(ImportExportModelAdmin):
     list_display = ("school_id", "school_name")
