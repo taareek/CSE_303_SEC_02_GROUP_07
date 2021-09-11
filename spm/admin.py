@@ -44,32 +44,36 @@ admin.register(Program_T)
 @admin.register(Student_T)
 class StudentData(ImportExportModelAdmin):
     #list_display = ("student_id", "f_name", "l_name", "email", "contact_no", "gender", "date_of_birth", "street", "city", "state", "year", "semester", "program_id", "department_id")
+    list_display = ("student_id", "f_name", "l_name", "email", "contact_no", "gender", "program_id", "department_id")
     pass
 admin.register(Student_T)
 
 @admin.register(Course_T)
 class CourseData(ImportExportModelAdmin):
-    #list_display = ("course_id", "course_name" , "course_type", "No Of Credits", "program_id" )
+    #list_display = ("course_id", "course_name" , "course_type", "no_of_credits", "program_id" )
+    list_display = ("course_id", "course_name" , "course_type", "program_id" )
     pass
 admin.register(Course_T)
 
 @admin.register(Pre_req_course_T)
 class PreReqCrsData(ImportExportModelAdmin):
+    #list_display = ("course_id", "pre_req_course_id")
     pass
 admin.register(Pre_req_course_T)
 
 @admin.register(PLO_T)
 class PLOData(ImportExportModelAdmin):
-    pass
+    list_display = ("plo_id", "plo_name", "program_id")
 admin.register(PLO_T)
 
 @admin.register(CO_T)
 class COData(ImportExportModelAdmin):
-    pass
+    list_display = ("co_id", "details", "course", "plo" )
 admin.register(CO_T)
 
 @admin.register(Faculty_T)
 class FacultyData(ImportExportModelAdmin):
+    list_display = ("faculty_id", "f_name", "l_name", "email")
     pass
 admin.register(Faculty_T)
 
@@ -96,19 +100,25 @@ admin.register(GFaculty_T)
 
 @admin.register(Section_T)
 class SectionData(ImportExportModelAdmin):
+    list_display = ("section_id", "semester_name", "course", "faculty")
     pass
 admin.register(Section_T)
+
+
 @admin.register(Assessments_T)
 class AssessmentData(ImportExportModelAdmin):
-   pass
+    list_display = ("assessments_id", "assessments_name", "co", "section")
+    pass
 admin.register(Assessments_T)
 
 @admin.register(Student_Enrollment_T)
 class StdEnronmentData(ImportExportModelAdmin):
+    #list_display = ("student_enrollment_d", "assessments_name")
     pass
 admin.register(Student_Enrollment_T)
 
 @admin.register(Evaluation_T)
 class EvaluationData(ImportExportModelAdmin):
+    #list_display =("evaluation_id", "obtain_marks")
     pass
 admin.register(Evaluation_T)

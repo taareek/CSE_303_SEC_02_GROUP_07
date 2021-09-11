@@ -16,10 +16,16 @@ class Department_T(models.Model):
     department_name = models.CharField(max_length= 50)
     school = models.ForeignKey(School_T, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.department_id
+
 class Program_T(models.Model):
     program_id = models.CharField(max_length= 15, primary_key=True)
     program_name = models.CharField(max_length= 50)
     department = models.ForeignKey(Department_T, on_delete=models.CASCADE, default=None)
+
+    def __str__(self):
+        return self.program_id
 
 class Student_T(models.Model):
     student_id = models.CharField(max_length= 8, primary_key=True)
@@ -37,6 +43,9 @@ class Student_T(models.Model):
     program = models.ForeignKey(Program_T, on_delete=models.CASCADE, default=None)
     department = models.ForeignKey(Department_T, on_delete=models.CASCADE, default=None)
 
+    def __str__(self):
+        return self.student_id
+
 class Course_T(models.Model):
     course_id = models.CharField(max_length= 15, primary_key=True)
     course_name = models.CharField(max_length= 50)
@@ -44,20 +53,32 @@ class Course_T(models.Model):
     no_of_credit = models.IntegerField(name='No of credits')
     program = models.ForeignKey(Program_T, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.course_id
+
 class Pre_req_course_T(models.Model):
     course_id = models.CharField(max_length= 15, primary_key=True)
     Pre_req_course_id = models.ForeignKey(Course_T, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.Pre_req_course_id
 
 class PLO_T(models.Model):
     plo_id = models.CharField(max_length= 10, primary_key=True)
     plo_name = models.CharField(max_length= 50)
     program = models.ForeignKey(Program_T, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.plo_id
+
 class CO_T(models.Model):
     co_id = models.CharField(max_length= 10, primary_key=True)
     details = models.TextField()
     course = models.ForeignKey(Course_T, on_delete=models.CASCADE)
     plo = models.ForeignKey(PLO_T, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.co_id
 
 class Faculty_T(models.Model):
     faculty_id = models.CharField(max_length= 10, primary_key=True)
@@ -72,11 +93,16 @@ class Faculty_T(models.Model):
     state = models.CharField(max_length= 20, null=True)
     faculty_type = models.CharField(max_length= 10, null=True)
 
+    def __str__(self):
+        return self.faculty_id
 
 class VC_T(models.Model):
     VFaculty_id = models.ForeignKey(Faculty_T, on_delete=models.CASCADE)
     joining_date = models.DateTimeField()
     end_date = models.DateTimeField(null = True)
+
+    def __str__(self):
+        return self.VFaculty_id
 
 class GFaculty_T(models.Model):
     Gfaculty_id = models.ForeignKey(Faculty_T, on_delete=models.CASCADE)
@@ -84,17 +110,26 @@ class GFaculty_T(models.Model):
     join_date = models.DateTimeField()
     department = models.ForeignKey(Department_T, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.GFaculty_id
+
 class Dean_T(models.Model):
     DFaculty_id = models.ForeignKey(Faculty_T, on_delete=models.CASCADE)
     joining_date = models.DateTimeField()
     end_date = models.DateTimeField()
     school = models.ForeignKey(School_T, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.DFaculty_id
+
 class Department_Head_T(models.Model):
     HODFaculty_id = models.ForeignKey(Faculty_T, on_delete=models.CASCADE)
     joining_date = models.DateTimeField()
     end_date = models.DateTimeField()
     department = models.ForeignKey(Department_T, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.HODFaculty_id
 
 class Section_T(models.Model):
     section_id = models.CharField(max_length= 20, primary_key=True)
@@ -105,12 +140,18 @@ class Section_T(models.Model):
     course = models.ForeignKey(Course_T, on_delete=models.CASCADE)
     faculty = models.ForeignKey(GFaculty_T, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.section_id
+
 class Student_Enrollment_T(models.Model):
     student_enrollment_id = models.IntegerField(name='Enrollment ID', primary_key= True)
     section = models.ForeignKey(Section_T, on_delete=models.CASCADE)
     student = models.ForeignKey(Student_T, on_delete=models.CASCADE)
     semester = models.CharField(max_length= 10)
     year = models.IntegerField(name= 'Year')
+
+    def __str__(self):
+        return self.student_enrollment_id
 
 class Assessments_T(models.Model):
     assessments_id = models.CharField(max_length=25, primary_key=True)
@@ -119,9 +160,15 @@ class Assessments_T(models.Model):
     co = models.ForeignKey(CO_T, on_delete=models.CASCADE)
     section = models.ForeignKey(Section_T, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.assessments_id
+
 class Evaluation_T(models.Model):
     evaluation_id = models.IntegerField(name= 'Evaluation ID', primary_key=True)
     obtain_marks = models.FloatField(name= 'Obtain Marks')
     #total_marks = models.FloatField(name= 'Total Marks')
     assessments = models.ForeignKey(Assessments_T, on_delete=models.CASCADE)
     student_enrollment = models.ForeignKey(Student_Enrollment_T, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.evaluation_id
