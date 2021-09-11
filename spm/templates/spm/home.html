@@ -1,11 +1,10 @@
 {% extends "spm/base.html" %}
  
 {% block content %}
-    <h1>Welcome to SPM Homepage!</h1>
+    <h1>Welcome to SPMS Homepage!</h1>
     {% for post in posts %}
         <h2>{{ post.uni_name }}</h2>
-        <p>This university is established in {{ post.year }} </p>
-        <p>This is one of the oldest {{ post.type }} in Bangladesh. </p>
+      
     {% endfor %}
 {% endblock content %}
  

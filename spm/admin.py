@@ -1,5 +1,6 @@
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
+#from .resources import *
 
 from .models import School_T, Department_T, Program_T, Student_T, Course_T, Pre_req_course_T, PLO_T, CO_T, Faculty_T, VC_T, GFaculty_T, Department_Head_T, Dean_T, Section_T, Student_Enrollment_T, Assessments_T, Evaluation_T
 # Register your models here.
@@ -107,6 +108,7 @@ admin.register(Section_T)
 
 @admin.register(Assessments_T)
 class AssessmentData(ImportExportModelAdmin):
+    #resource_class  = AssessmentAdminResource
     list_display = ("assessments_id", "assessments_name", "co", "section")
     pass
 admin.register(Assessments_T)
