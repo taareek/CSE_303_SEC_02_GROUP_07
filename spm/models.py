@@ -138,7 +138,7 @@ class Section_T(models.Model):
     year = models.IntegerField(name= 'Year')
     student_capacity = models.IntegerField(name='No of student')
     course = models.ForeignKey(Course_T, on_delete=models.CASCADE)
-    faculty = models.ForeignKey(GFaculty_T, on_delete=models.CASCADE)
+    faculty = models.ForeignKey(Faculty_T, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.section_id
