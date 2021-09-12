@@ -140,5 +140,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 #AUTH_USER_MODEL = 'users.User'
 
-LOGIN_REDIRECT_URL = 'spm-home'
+LOGIN_REDIRECT_URL = 'spm-user'
 LOGIN_URL = 'login'

@@ -19,3 +19,6 @@ def home(request):
 
 def about(request):
     return render(request, 'spm/about.html', {'title': 'About'})
+
+def users_view(request):
+    return render(request, 'spm/users_view.html', {'title':'SPMS'})

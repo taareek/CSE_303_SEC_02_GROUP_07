@@ -29,8 +29,9 @@
             <div class="collapse navbar-collapse" id="navbarToggle">
               <div class="navbar-nav mr-auto">
                 {% if user.is_authenticated %}
-                  <a class="nav-item nav-link" href="{% url 'spm-home' %}">Home</a>
-                  <a class="nav-item nav-link" href="{% url 'spm-about' %}">About</a>
+                  <a class="nav-item nav-link" href="#">Semester Wise PLO Performance</a>
+                  <a class="nav-item nav-link" href="{% url 'spm-about' %}">Course Wise PLO Performance</a>
+                  <a class="nav-item nav-link" href="{% url 'spm-about' %}">Total PLO Performance</a>
                 {% else %}
                   <a class="nav-item nav-link" href="{% url 'spm-home' %}">Home</a>
                   <a class="nav-item nav-link" href="{% url 'spm-about' %}">About</a>

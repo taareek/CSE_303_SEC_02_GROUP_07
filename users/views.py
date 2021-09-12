@@ -18,5 +18,17 @@ def register(request):
     
     return render(request, 'users/register.html', {'form': form})
     
-# @login_required
+@login_required
+def student(request):
+    return render(request, 'users/student1.html')
+
+def faculty(request):
+    return render(request, 'users/faculty.html')
+
+def department_head(request):
+    return render(request, 'users/dhead.html')
+
+def registrars_office(request):
+    return render(request, 'users/officeregister.html')
+
     

@@ -17,10 +17,16 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from users import views as user_views
+from spm import views as spm_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('users/', spm_view.users_view, name= 'spmuser'),
     path('register/', user_views.register, name= 'register'),
+    path('student/', user_views.student, name= 'student'),
+    path('faculty/', user_views.faculty, name= 'faculty'),
+    path('depthead/', user_views.department_head, name= 'depthead'),
+    path('registrarsofc/', user_views.registrars_office, name= 'registrarsofc'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('', include('spm.urls')),
