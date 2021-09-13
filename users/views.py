@@ -31,4 +31,12 @@ def department_head(request):
 def registrars_office(request):
     return render(request, 'users/officeregister.html')
 
+def vc(request):
+    return render(request,'users/Vc.html' )
+
+def dean(request):
+    return render(request, 'users/Dean.html')
+
+def department(request):
+    return render(request, 'users/Department.html')
     

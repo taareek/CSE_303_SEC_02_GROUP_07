@@ -33,8 +33,9 @@
                   <a class="nav-item nav-link" href="{% url 'faculty' %}">Faculty</a>
                   <a class="nav-item nav-link" href="{% url 'depthead' %}">Departtment Head</a>
                   <a class="nav-item nav-link" href="{% url 'registrarsofc' %}">Registrars Office</a>
-                  <a class="nav-item nav-link" href="#">Dean</a>
-                  <a class="nav-item nav-link" href="#">VC</a>
+                  <a class="nav-item nav-link" href="{% url 'dean' %}">Dean</a>
+                  <a class="nav-item nav-link" href="{% url 'vc' %}">VC</a>
+                  <a class="nav-item nav-link" href="{% url 'department' %}">Department</a>
                 {% else %}
                   <a class="nav-item nav-link" href="{% url 'spm-home' %}">Home</a>
                   <a class="nav-item nav-link" href="{% url 'spm-about' %}">About</a>
